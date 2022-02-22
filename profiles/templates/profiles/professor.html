@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="margin-top:8rem;">
+
+    <!-- Team -->
+    <section id="team" class="pb-5">
+        <div class="container">
+            <h5 class="section-title h1 text-center text-danger">تعرف على أساتذتنا الخبراء</h5>
+            <div class="row">
+                <!-- Team member -->
+                {% for department in departments %}
+                <h1 class="text-center my-5">قسم {{department.title}} </h1>
+                {% for professor in department.get_professor %}
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip">
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card shadow">
+                                    <div class="card-body text-center ">
+                                        <p><img class=" img-fluid" src="{{professor.photo.url}}" alt="card image"></p>
+                                        <h4 class="card-title">{{professor.fullName}}</h4>
+                                        <p class="card-text">{{professor.department}}</p>
+                                        <a href="https://www.fiverr.com/share/qb8D02" class="btn btn-primary btn-sm"><i
+                                                class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">{{professor.fullName}}</h4>
+                                        <p class="card-text">{{professor.bio}}
+                                        </p>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank"
+                                                    href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank"
+                                                    href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank"
+                                                    href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <a class="social-icon text-xs-center" target="_blank"
+                                                    href="https://www.fiverr.com/share/qb8D02">
+                                                    <i class="fa fa-google"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                <!-- ./Team member -->
+            </div>
+        </div>
+    </section>
+    <!-- Team -->
+</div>
+{% endblock content %}
+
+
+
+<div class="card text-left">
+    <img class="card-img-top" src="{{professor.photo.url}}" alt="">
+    <div class="card-body">
+        <h4 class="card-title">{{professor.fullName}}</h4>
+        <h5 class="text-danger">{{professor.department}}</h5>
+        <p class="card-text">{{professor.bio}}</p>
+    </div>
+</div>
